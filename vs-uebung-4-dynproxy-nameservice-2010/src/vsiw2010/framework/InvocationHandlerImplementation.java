@@ -7,7 +7,17 @@ import java.lang.reflect.Method;
 import java.net.Socket;
 
 
-
+/**
+ * Die InvocationHandler-Implementierung stellt eine Methode invoke zur Verfügung,
+ * die bei jedem Methodenaufruf des mittels java.lang.reflect.Proxy generierten Proxys
+ * anstelle der Methode aufgerufen wird.
+ * 
+ * Diese Methode ist somit der zentrale Punkt, an dem die Kommunikation mit
+ * dem Server implementiert werden kann.
+ * 
+ * @author Wolfgang Wiedermann
+ *
+ */
 public class InvocationHandlerImplementation implements InvocationHandler {
 	
 	private String server;
@@ -29,7 +39,7 @@ public class InvocationHandlerImplementation implements InvocationHandler {
 		ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 		
 		Request request = new Request();
-		request.setObjectId(this.objectId); // TODO: Dynamisch gestalten
+		request.setObjectId(this.objectId);
 		request.setMethodName(method.getName());
 		request.setParamTypes(method.getParameterTypes());
 		request.setParams(args);
