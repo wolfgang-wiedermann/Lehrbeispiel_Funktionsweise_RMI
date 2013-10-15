@@ -16,7 +16,6 @@ import java.net.Socket;
  * dem Server implementiert werden kann.
  * 
  * @author Wolfgang Wiedermann
- *
  */
 public class InvocationHandlerImplementation implements InvocationHandler {
 	
